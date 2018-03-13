@@ -5,6 +5,8 @@
 ; Author : chfs
 ;
 ; Bla bla test comment
+;
+; More bla bla excessive test comment
 
                             ; SETUP
     ldi r16, 0xff           ; load the bit pattern 1111 1111 into r16
