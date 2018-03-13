@@ -7,6 +7,9 @@
 ; Bla bla test comment
 ;
 ; More bla bla excessive test comment
+; Bla bla no longer here
+; this is also a test
+
 
                             ; SETUP
     ldi r16, 0xff           ; load the bit pattern 1111 1111 into r16
