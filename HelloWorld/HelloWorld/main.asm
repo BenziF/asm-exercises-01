@@ -4,7 +4,8 @@
 ; Created: 3/7/2018 9:21:47 PM
 ; Author : chfs
 ;
-; Bla bla test comment
+; Bla bla no longer here
+; this is also a test
 
                             ; SETUP
     ldi r16, 0xff           ; load the bit pattern 1111 1111 into r16
