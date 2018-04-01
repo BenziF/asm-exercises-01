@@ -16,7 +16,7 @@ NEXT_ROUND:
 	CALL SHOW_SEQUENCE_STATE
 	CALL PLAYER_TURN_STATE
 	CPI R24, 1							; Check if player was correct, i.e. R24 == 1
-	BRNE FAIL							; If player incorrent, go to FAIL (show FAIL blink and start over)
+	BRNE FAIL							; If player incorrect, go to FAIL (show FAIL blink and start over)
 	CP R26, R25							; If player didn't fail AND whole sequence has been shown
 	BREQ WIN_STATE						; --> WIN forever
 	CALL SHOW_CORRECT_BLINK				; If player didn't fail, but game not yet finished, blink 1 x WIN, and
@@ -38,7 +38,7 @@ FAIL_AGAIN:						; -----
 	BRNE FAIL_AGAIN				; -----
 	
 	LDI R16, 0xFF				;
-	OUT PORTA, R16				; Switch of LEDs after blinking pattern
+	OUT PORTA, R16				; Switch off LEDs after blinking pattern
 	POP R16
 	POP R17
 	RJMP START					; Jump to START to reset game
@@ -80,10 +80,9 @@ SHOW_CORRECT_BLINK_AGAIN:
 SHOW_SEQUENCE_STATE:							; Shows the current sequence
 	PUSH R16
 	PUSH R25
-	INC R25										
-	LDI ZH, HIGH(ARRAY<<1)
-	LDI ZL, LOW(ARRAY<<1)
-	LPM R16, Z
+	INC R25										; Increment R25 (round length), so the current sequence of the round is 1 longer than last round								
+	LDI ZH, HIGH(ARRAY<<1)						; New round -> reset index of Z to first element of ARRAY
+	LDI ZL, LOW(ARRAY<<1)						; Because every new round should start with the first element
 	CALL DELAY
 BLINK:
 	DEC R25
